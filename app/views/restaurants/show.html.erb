@@ -22,8 +22,22 @@
         <%= @restaurant.category %>
       </p>
 
-      <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> -
-      <%= link_to 'All restaurants', restaurants_path %>
+      <p>
+        <strong>Reviews:</strong>
+        <% @restaurant.reviews.each do |review| %>
+        <p><%= review.content %> - Rating : <%= review.rating %>/5</p>
+        <% end %>
+      </p>
+
+      <%= link_to new_restaurant_review_path(@restaurant) do %>
+      <button class="btn btn-primary">Add review</button>
+      <% end %>
+      <%= link_to edit_restaurant_path(@restaurant) do %>
+      <button class="btn btn-info">Edit</button>
+      <% end %>
+      <%= link_to restaurants_path do %>
+      <button class="btn btn-warning">Back to restaurants</button>
+      <% end %>
     </div>
   </div>
 </div>
